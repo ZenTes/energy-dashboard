@@ -38,18 +38,22 @@
     color: #8b949e;
     margin-bottom: 10px;
     padding: 6px 10px;
-    border-left: 3px solid #1f6feb;
+    border-left: 3px solid #f7c948;
     background: #161b22;
     border-radius: 0 6px 6px 0;
   }
-  .section-label.europe { border-left-color: #3fb950; }
-  .section-label.asia   { border-left-color: #f78166; }
+  .section-label.supermajors { border-left-color: #1f6feb; }
+  .section-label.usep        { border-left-color: #3fb950; }
+  .section-label.europe      { border-left-color: #a371f7; }
+  .section-label.asia        { border-left-color: #f78166; }
   .grid {
     display: grid;
     gap: 12px;
     grid-template-columns: repeat(4, 1fr);
   }
   .grid-3 { grid-template-columns: repeat(3, 1fr); }
+  .grid-5 { grid-template-columns: repeat(5, 1fr); }
+  .grid-9 { grid-template-columns: repeat(9, 1fr); }
   .card {
     background: #161b22;
     border: 1px solid #21262d;
@@ -67,11 +71,17 @@
   .name   { font-size: 0.65rem; color: #8b949e; }
   .card iframe { display: block; width: 100%; height: 160px; border: none; }
   footer { text-align: center; font-size: 0.65rem; color: #484f58; margin-top: 12px; }
-  @media (max-width: 960px) {
-    .grid, .grid-3 { grid-template-columns: repeat(2, 1fr); }
+  @media (max-width: 1200px) {
+    .grid-9 { grid-template-columns: repeat(5, 1fr); }
   }
-  @media (max-width: 520px) {
-    .grid, .grid-3 { grid-template-columns: 1fr; }
+  @media (max-width: 960px) {
+    .grid, .grid-3, .grid-5, .grid-9 { grid-template-columns: repeat(3, 1fr); }
+  }
+  @media (max-width: 620px) {
+    .grid, .grid-3, .grid-5, .grid-9 { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (max-width: 400px) {
+    .grid, .grid-3, .grid-5, .grid-9 { grid-template-columns: 1fr; }
   }
 </style>
 </head>
@@ -82,10 +92,10 @@
   <span class="badge">LIVE</span>
 </header>
 
-<!-- ═══════════════ US ═══════════════ -->
+<!-- ═══════════ COMMODITIES ═══════════ -->
 <div class="section">
-  <div class="section-label">🇺🇸 US — Commodities &amp; Equities</div>
-  <div class="grid" style="margin-bottom:12px;">
+  <div class="section-label">🛢️ Commodities</div>
+  <div class="grid">
 
     <div class="card">
       <div class="card-header"><span class="ticker">WTI Crude</span><span class="name">TVC:USOIL</span></div>
@@ -93,23 +103,60 @@
     </div>
 
     <div class="card">
-      <div class="card-header"><span class="ticker">Natural Gas</span><span class="name">TVC:NATGASUSD</span></div>
+      <div class="card-header"><span class="ticker">Brent Crude</span><span class="name">TVC:UKOIL</span></div>
+      <iframe src="https://s.tradingview.com/widgetembed/?symbol=TVC%3AUKOIL&interval=60&theme=dark&style=3&hide_top_toolbar=1&hidesidetoolbar=1&withdateranges=0&hideideas=1&saveimage=0" allowtransparency="true" scrolling="no"></iframe>
+    </div>
+
+    <div class="card">
+      <div class="card-header"><span class="ticker">Henry Hub</span><span class="name">NYMEX Nat Gas</span></div>
       <iframe src="https://s.tradingview.com/widgetembed/?symbol=TVC%3ANATGASUSD&interval=60&theme=dark&style=3&hide_top_toolbar=1&hidesidetoolbar=1&withdateranges=0&hideideas=1&saveimage=0" allowtransparency="true" scrolling="no"></iframe>
     </div>
 
     <div class="card">
-      <div class="card-header"><span class="ticker">Gold</span><span class="name">TVC:GOLD</span></div>
-      <iframe src="https://s.tradingview.com/widgetembed/?symbol=TVC%3AGOLD&interval=60&theme=dark&style=3&hide_top_toolbar=1&hidesidetoolbar=1&withdateranges=0&hideideas=1&saveimage=0" allowtransparency="true" scrolling="no"></iframe>
-    </div>
-
-    <div class="card">
-      <div class="card-header"><span class="ticker">USD Index</span><span class="name">TVC:DXY</span></div>
-      <iframe src="https://s.tradingview.com/widgetembed/?symbol=TVC%3ADXY&interval=60&theme=dark&style=3&hide_top_toolbar=1&hidesidetoolbar=1&withdateranges=0&hideideas=1&saveimage=0" allowtransparency="true" scrolling="no"></iframe>
+      <div class="card-header"><span class="ticker">Waha Hub</span><span class="name">Permian Basis</span></div>
+      <iframe src="https://s.tradingview.com/widgetembed/?symbol=NYMEX%3ANG1%21&interval=60&theme=dark&style=3&hide_top_toolbar=1&hidesidetoolbar=1&withdateranges=0&hideideas=1&saveimage=0" allowtransparency="true" scrolling="no"></iframe>
     </div>
 
   </div>
+</div>
 
-  <div class="grid grid-3">
+<!-- ═══════════ SUPER MAJORS ═══════════ -->
+<div class="section">
+  <div class="section-label supermajors">🌐 Super Majors</div>
+  <div class="grid-5" style="display:grid;gap:12px;">
+
+    <div class="card">
+      <div class="card-header"><span class="ticker">XOM</span><span class="name">ExxonMobil</span></div>
+      <iframe src="https://s.tradingview.com/widgetembed/?symbol=NYSE%3AXOM&interval=D&theme=dark&style=3&hide_top_toolbar=1&hidesidetoolbar=1&withdateranges=0&hideideas=1&saveimage=0" allowtransparency="true" scrolling="no"></iframe>
+    </div>
+
+    <div class="card">
+      <div class="card-header"><span class="ticker">CVX</span><span class="name">Chevron</span></div>
+      <iframe src="https://s.tradingview.com/widgetembed/?symbol=NYSE%3ACVX&interval=D&theme=dark&style=3&hide_top_toolbar=1&hidesidetoolbar=1&withdateranges=0&hideideas=1&saveimage=0" allowtransparency="true" scrolling="no"></iframe>
+    </div>
+
+    <div class="card">
+      <div class="card-header"><span class="ticker">COP</span><span class="name">ConocoPhillips</span></div>
+      <iframe src="https://s.tradingview.com/widgetembed/?symbol=NYSE%3ACOP&interval=D&theme=dark&style=3&hide_top_toolbar=1&hidesidetoolbar=1&withdateranges=0&hideideas=1&saveimage=0" allowtransparency="true" scrolling="no"></iframe>
+    </div>
+
+    <div class="card">
+      <div class="card-header"><span class="ticker">BP</span><span class="name">BP plc</span></div>
+      <iframe src="https://s.tradingview.com/widgetembed/?symbol=NYSE%3ABP&interval=D&theme=dark&style=3&hide_top_toolbar=1&hidesidetoolbar=1&withdateranges=0&hideideas=1&saveimage=0" allowtransparency="true" scrolling="no"></iframe>
+    </div>
+
+    <div class="card">
+      <div class="card-header"><span class="ticker">SHEL</span><span class="name">Shell plc</span></div>
+      <iframe src="https://s.tradingview.com/widgetembed/?symbol=NYSE%3ASHEL&interval=D&theme=dark&style=3&hide_top_toolbar=1&hidesidetoolbar=1&withdateranges=0&hideideas=1&saveimage=0" allowtransparency="true" scrolling="no"></iframe>
+    </div>
+
+  </div>
+</div>
+
+<!-- ═══════════ US E&P ═══════════ -->
+<div class="section">
+  <div class="section-label usep">🇺🇸 US E&amp;P</div>
+  <div class="grid-9" style="display:grid;gap:12px;">
 
     <div class="card">
       <div class="card-header"><span class="ticker">EOG</span><span class="name">EOG Resources</span></div>
@@ -127,141 +174,98 @@
     </div>
 
     <div class="card">
-      <div class="card-header"><span class="ticker">XOM</span><span class="name">ExxonMobil</span></div>
-      <iframe src="https://s.tradingview.com/widgetembed/?symbol=NYSE%3AXOM&interval=D&theme=dark&style=3&hide_top_toolbar=1&hidesidetoolbar=1&withdateranges=0&hideideas=1&saveimage=0" allowtransparency="true" scrolling="no"></iframe>
+      <div class="card-header"><span class="ticker">CTRA</span><span class="name">Coterra Energy</span></div>
+      <iframe src="https://s.tradingview.com/widgetembed/?symbol=NYSE%3ACTRA&interval=D&theme=dark&style=3&hide_top_toolbar=1&hidesidetoolbar=1&withdateranges=0&hideideas=1&saveimage=0" allowtransparency="true" scrolling="no"></iframe>
     </div>
 
     <div class="card">
-      <div class="card-header"><span class="ticker">CVX</span><span class="name">Chevron</span></div>
-      <iframe src="https://s.tradingview.com/widgetembed/?symbol=NYSE%3ACVX&interval=D&theme=dark&style=3&hide_top_toolbar=1&hidesidetoolbar=1&withdateranges=0&hideideas=1&saveimage=0" allowtransparency="true" scrolling="no"></iframe>
+      <div class="card-header"><span class="ticker">SM</span><span class="name">SM Energy</span></div>
+      <iframe src="https://s.tradingview.com/widgetembed/?symbol=NYSE%3ASM&interval=D&theme=dark&style=3&hide_top_toolbar=1&hidesidetoolbar=1&withdateranges=0&hideideas=1&saveimage=0" allowtransparency="true" scrolling="no"></iframe>
     </div>
 
     <div class="card">
-      <div class="card-header"><span class="ticker">OXY</span><span class="name">Occidental Petroleum</span></div>
-      <iframe src="https://s.tradingview.com/widgetembed/?symbol=NYSE%3AOXY&interval=D&theme=dark&style=3&hide_top_toolbar=1&hidesidetoolbar=1&withdateranges=0&hideideas=1&saveimage=0" allowtransparency="true" scrolling="no"></iframe>
+      <div class="card-header"><span class="ticker">CHRD</span><span class="name">Chord Energy</span></div>
+      <iframe src="https://s.tradingview.com/widgetembed/?symbol=NASDAQ%3ACHRD&interval=D&theme=dark&style=3&hide_top_toolbar=1&hidesidetoolbar=1&withdateranges=0&hideideas=1&saveimage=0" allowtransparency="true" scrolling="no"></iframe>
+    </div>
+
+    <div class="card">
+      <div class="card-header"><span class="ticker">OVV</span><span class="name">Ovintiv</span></div>
+      <iframe src="https://s.tradingview.com/widgetembed/?symbol=NYSE%3AOVV&interval=D&theme=dark&style=3&hide_top_toolbar=1&hidesidetoolbar=1&withdateranges=0&hideideas=1&saveimage=0" allowtransparency="true" scrolling="no"></iframe>
+    </div>
+
+    <div class="card">
+      <div class="card-header"><span class="ticker">EQT</span><span class="name">EQT Corp</span></div>
+      <iframe src="https://s.tradingview.com/widgetembed/?symbol=NYSE%3AEQT&interval=D&theme=dark&style=3&hide_top_toolbar=1&hidesidetoolbar=1&withdateranges=0&hideideas=1&saveimage=0" allowtransparency="true" scrolling="no"></iframe>
+    </div>
+
+    <div class="card">
+      <div class="card-header"><span class="ticker">AR</span><span class="name">Antero Resources</span></div>
+      <iframe src="https://s.tradingview.com/widgetembed/?symbol=NYSE%3AAR&interval=D&theme=dark&style=3&hide_top_toolbar=1&hidesidetoolbar=1&withdateranges=0&hideideas=1&saveimage=0" allowtransparency="true" scrolling="no"></iframe>
     </div>
 
   </div>
 </div>
 
-<!-- ═══════════════ EUROPE ═══════════════ -->
+<!-- ═══════════ EUROPE E&P ═══════════ -->
 <div class="section">
-  <div class="section-label europe">🇪🇺 Europe — Commodities &amp; Equities</div>
-  <div class="grid" style="margin-bottom:12px;">
+  <div class="section-label europe">🇪🇺 Europe — Top 5 E&amp;P</div>
+  <div class="grid-5" style="display:grid;gap:12px;">
 
     <div class="card">
-      <div class="card-header"><span class="ticker">Brent Crude</span><span class="name">TVC:UKOIL</span></div>
-      <iframe src="https://s.tradingview.com/widgetembed/?symbol=TVC%3AUKOIL&interval=60&theme=dark&style=3&hide_top_toolbar=1&hidesidetoolbar=1&withdateranges=0&hideideas=1&saveimage=0" allowtransparency="true" scrolling="no"></iframe>
-    </div>
-
-    <div class="card">
-      <div class="card-header"><span class="ticker">EU Nat Gas</span><span class="name">TVC:NATGAS</span></div>
-      <iframe src="https://s.tradingview.com/widgetembed/?symbol=PEPPERSTONE%3ANATGAS&interval=60&theme=dark&style=3&hide_top_toolbar=1&hidesidetoolbar=1&withdateranges=0&hideideas=1&saveimage=0" allowtransparency="true" scrolling="no"></iframe>
-    </div>
-
-    <div class="card">
-      <div class="card-header"><span class="ticker">EUR/USD</span><span class="name">FX:EURUSD</span></div>
-      <iframe src="https://s.tradingview.com/widgetembed/?symbol=FX%3AEURUSD&interval=60&theme=dark&style=3&hide_top_toolbar=1&hidesidetoolbar=1&withdateranges=0&hideideas=1&saveimage=0" allowtransparency="true" scrolling="no"></iframe>
-    </div>
-
-    <div class="card">
-      <div class="card-header"><span class="ticker">Carbon ETS</span><span class="name">ICEUS:CF1!</span></div>
-      <iframe src="https://s.tradingview.com/widgetembed/?symbol=ICEEUR%3ATEC1%21&interval=D&theme=dark&style=3&hide_top_toolbar=1&hidesidetoolbar=1&withdateranges=0&hideideas=1&saveimage=0" allowtransparency="true" scrolling="no"></iframe>
-    </div>
-
-  </div>
-
-  <div class="grid grid-3">
-
-    <div class="card">
-      <div class="card-header"><span class="ticker">SHEL</span><span class="name">Shell plc</span></div>
-      <iframe src="https://s.tradingview.com/widgetembed/?symbol=NYSE%3ASHEL&interval=D&theme=dark&style=3&hide_top_toolbar=1&hidesidetoolbar=1&withdateranges=0&hideideas=1&saveimage=0" allowtransparency="true" scrolling="no"></iframe>
-    </div>
-
-    <div class="card">
-      <div class="card-header"><span class="ticker">BP</span><span class="name">BP plc</span></div>
-      <iframe src="https://s.tradingview.com/widgetembed/?symbol=NYSE%3ABP&interval=D&theme=dark&style=3&hide_top_toolbar=1&hidesidetoolbar=1&withdateranges=0&hideideas=1&saveimage=0" allowtransparency="true" scrolling="no"></iframe>
-    </div>
-
-    <div class="card">
-      <div class="card-header"><span class="ticker">TTE</span><span class="name">TotalEnergies</span></div>
+      <div class="card-header"><span class="ticker">TTE</span><span class="name">TotalEnergies (FR)</span></div>
       <iframe src="https://s.tradingview.com/widgetembed/?symbol=NYSE%3ATTE&interval=D&theme=dark&style=3&hide_top_toolbar=1&hidesidetoolbar=1&withdateranges=0&hideideas=1&saveimage=0" allowtransparency="true" scrolling="no"></iframe>
     </div>
 
     <div class="card">
-      <div class="card-header"><span class="ticker">EQNR</span><span class="name">Equinor (Norway)</span></div>
+      <div class="card-header"><span class="ticker">EQNR</span><span class="name">Equinor (NO)</span></div>
       <iframe src="https://s.tradingview.com/widgetembed/?symbol=NYSE%3AEQNR&interval=D&theme=dark&style=3&hide_top_toolbar=1&hidesidetoolbar=1&withdateranges=0&hideideas=1&saveimage=0" allowtransparency="true" scrolling="no"></iframe>
     </div>
 
     <div class="card">
-      <div class="card-header"><span class="ticker">ENI</span><span class="name">Eni SpA (Italy)</span></div>
+      <div class="card-header"><span class="ticker">ENI</span><span class="name">Eni SpA (IT)</span></div>
       <iframe src="https://s.tradingview.com/widgetembed/?symbol=NYSE%3AE&interval=D&theme=dark&style=3&hide_top_toolbar=1&hidesidetoolbar=1&withdateranges=0&hideideas=1&saveimage=0" allowtransparency="true" scrolling="no"></iframe>
     </div>
 
     <div class="card">
-      <div class="card-header"><span class="ticker">REP</span><span class="name">Repsol (Spain)</span></div>
+      <div class="card-header"><span class="ticker">REP</span><span class="name">Repsol (ES)</span></div>
       <iframe src="https://s.tradingview.com/widgetembed/?symbol=BME%3AREP&interval=D&theme=dark&style=3&hide_top_toolbar=1&hidesidetoolbar=1&withdateranges=0&hideideas=1&saveimage=0" allowtransparency="true" scrolling="no"></iframe>
+    </div>
+
+    <div class="card">
+      <div class="card-header"><span class="ticker">OMV</span><span class="name">OMV AG (AT)</span></div>
+      <iframe src="https://s.tradingview.com/widgetembed/?symbol=WBAG%3AOMV&interval=D&theme=dark&style=3&hide_top_toolbar=1&hidesidetoolbar=1&withdateranges=0&hideideas=1&saveimage=0" allowtransparency="true" scrolling="no"></iframe>
     </div>
 
   </div>
 </div>
 
-<!-- ═══════════════ ASIA ═══════════════ -->
+<!-- ═══════════ ASIA E&P ═══════════ -->
 <div class="section">
-  <div class="section-label asia">🌏 Asia — Commodities &amp; Equities</div>
-  <div class="grid" style="margin-bottom:12px;">
+  <div class="section-label asia">🌏 Asia — Top 5 E&amp;P Operators</div>
+  <div class="grid-5" style="display:grid;gap:12px;">
 
     <div class="card">
-      <div class="card-header"><span class="ticker">Dubai Crude</span><span class="name">OMAN:OQD</span></div>
-      <iframe src="https://s.tradingview.com/widgetembed/?symbol=TVC%3AUSOIL&interval=60&theme=dark&style=3&hide_top_toolbar=1&hidesidetoolbar=1&withdateranges=0&hideideas=1&saveimage=0" allowtransparency="true" scrolling="no"></iframe>
-    </div>
-
-    <div class="card">
-      <div class="card-header"><span class="ticker">LNG Asia</span><span class="name">Spot Reference</span></div>
-      <iframe src="https://s.tradingview.com/widgetembed/?symbol=TVC%3ANATGASUSD&interval=60&theme=dark&style=3&hide_top_toolbar=1&hidesidetoolbar=1&withdateranges=0&hideideas=1&saveimage=0" allowtransparency="true" scrolling="no"></iframe>
-    </div>
-
-    <div class="card">
-      <div class="card-header"><span class="ticker">USD/JPY</span><span class="name">FX:USDJPY</span></div>
-      <iframe src="https://s.tradingview.com/widgetembed/?symbol=FX%3AUSDJPY&interval=60&theme=dark&style=3&hide_top_toolbar=1&hidesidetoolbar=1&withdateranges=0&hideideas=1&saveimage=0" allowtransparency="true" scrolling="no"></iframe>
-    </div>
-
-    <div class="card">
-      <div class="card-header"><span class="ticker">USD/CNH</span><span class="name">FX:USDCNH</span></div>
-      <iframe src="https://s.tradingview.com/widgetembed/?symbol=FX%3AUSDCNH&interval=60&theme=dark&style=3&hide_top_toolbar=1&hidesidetoolbar=1&withdateranges=0&hideideas=1&saveimage=0" allowtransparency="true" scrolling="no"></iframe>
-    </div>
-
-  </div>
-
-  <div class="grid grid-3">
-
-    <div class="card">
-      <div class="card-header"><span class="ticker">PTR / 857</span><span class="name">PetroChina (HK)</span></div>
+      <div class="card-header"><span class="ticker">857 / PTR</span><span class="name">PetroChina (HK)</span></div>
       <iframe src="https://s.tradingview.com/widgetembed/?symbol=HKEX%3A857&interval=D&theme=dark&style=3&hide_top_toolbar=1&hidesidetoolbar=1&withdateranges=0&hideideas=1&saveimage=0" allowtransparency="true" scrolling="no"></iframe>
     </div>
 
     <div class="card">
-      <div class="card-header"><span class="ticker">SNP / 386</span><span class="name">Sinopec (HK)</span></div>
+      <div class="card-header"><span class="ticker">386 / SNP</span><span class="name">Sinopec (HK)</span></div>
       <iframe src="https://s.tradingview.com/widgetembed/?symbol=HKEX%3A386&interval=D&theme=dark&style=3&hide_top_toolbar=1&hidesidetoolbar=1&withdateranges=0&hideideas=1&saveimage=0" allowtransparency="true" scrolling="no"></iframe>
     </div>
 
     <div class="card">
-      <div class="card-header"><span class="ticker">INPEX</span><span class="name">Inpex Corp (Japan)</span></div>
+      <div class="card-header"><span class="ticker">INPEX</span><span class="name">Inpex Corp (JP)</span></div>
       <iframe src="https://s.tradingview.com/widgetembed/?symbol=TSE%3A1605&interval=D&theme=dark&style=3&hide_top_toolbar=1&hidesidetoolbar=1&withdateranges=0&hideideas=1&saveimage=0" allowtransparency="true" scrolling="no"></iframe>
     </div>
 
     <div class="card">
-      <div class="card-header"><span class="ticker">ONGC</span><span class="name">Oil &amp; Nat Gas (India)</span></div>
+      <div class="card-header"><span class="ticker">ONGC</span><span class="name">ONGC (IN)</span></div>
       <iframe src="https://s.tradingview.com/widgetembed/?symbol=NSE%3AONGC&interval=D&theme=dark&style=3&hide_top_toolbar=1&hidesidetoolbar=1&withdateranges=0&hideideas=1&saveimage=0" allowtransparency="true" scrolling="no"></iframe>
     </div>
 
     <div class="card">
-      <div class="card-header"><span class="ticker">RELIANCE</span><span class="name">Reliance Industries</span></div>
-      <iframe src="https://s.tradingview.com/widgetembed/?symbol=NSE%3ARELIANCE&interval=D&theme=dark&style=3&hide_top_toolbar=1&hidesidetoolbar=1&withdateranges=0&hideideas=1&saveimage=0" allowtransparency="true" scrolling="no"></iframe>
-    </div>
-
-    <div class="card">
-      <div class="card-header"><span class="ticker">PTT</span><span class="name">PTT plc (Thailand)</span></div>
+      <div class="card-header"><span class="ticker">PTT</span><span class="name">PTT plc (TH)</span></div>
       <iframe src="https://s.tradingview.com/widgetembed/?symbol=SET%3APTT&interval=D&theme=dark&style=3&hide_top_toolbar=1&hidesidetoolbar=1&withdateranges=0&hideideas=1&saveimage=0" allowtransparency="true" scrolling="no"></iframe>
     </div>
 
