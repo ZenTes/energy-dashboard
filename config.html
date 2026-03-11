@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <script src="https://res.cdn.office.net/teams-js/2.0.0/js/MicrosoftTeams.min.js"></script>
+</head>
+<body>
+  <script>
+    microsoftTeams.app.initialize().then(() => {
+      microsoftTeams.pages.config.registerOnSaveHandler((saveEvent) => {
+        microsoftTeams.pages.config.setConfig({
+          contentUrl: "https://ZenTes.github.io/energy-dashboard",
+          entityId: "energyDashboard",
+          suggestedDisplayName: "Energy Dashboard"
+        });
+        saveEvent.notifySuccess();
+      });
+      microsoftTeams.pages.config.setValidState(true);
+    });
+  </script>
+</body>
+</html>
