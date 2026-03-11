@@ -29,11 +29,7 @@
     border-radius: 20px;
     font-weight: 600;
   }
-
-  /* ── Section wrapper ── */
   .section { margin-bottom: 10px; }
-
-  /* ── Collapsible header ── */
   .section-toggle {
     width: 100%;
     background: #161b22;
@@ -70,8 +66,6 @@
     transition: transform .25s;
   }
   .section-toggle.open .chevron { transform: rotate(180deg); }
-
-  /* ── Collapsible body ── */
   .section-body {
     overflow: hidden;
     max-height: 0;
@@ -82,8 +76,6 @@
     max-height: 4000px;
     padding: 12px 2px 4px;
   }
-
-  /* ── Sub-group label ── */
   .sub-label {
     font-size: 0.68rem;
     font-weight: 700;
@@ -97,14 +89,10 @@
     border-radius: 0 5px 5px 0;
   }
   .sub-label:first-child { margin-top: 0; }
-
-  /* ── Grids ── */
   .grid  { display: grid; gap: 10px; grid-template-columns: repeat(4, 1fr); }
   .g3    { grid-template-columns: repeat(3, 1fr); }
   .g5    { grid-template-columns: repeat(5, 1fr); }
   .g9    { grid-template-columns: repeat(9, 1fr); }
-
-  /* ── Card ── */
   .card {
     background: #161b22;
     border: 1px solid #21262d;
@@ -121,29 +109,18 @@
   .ticker { font-size: 0.8rem; font-weight: 700; color: #f0f6fc; }
   .name   { font-size: 0.62rem; color: #8b949e; }
   .card iframe { display: block; width: 100%; height: 155px; border: none; }
-
   footer { text-align: center; font-size: 0.65rem; color: #484f58; margin-top: 16px; }
-
-  /* ── Accent colours ── */
   .ac-commodity  { background: #f7c948; }
   .ac-major      { background: #1f6feb; }
   .ac-us         { background: #3fb950; }
   .ac-europe     { background: #a371f7; }
   .ac-asia       { background: #f78166; }
   .ac-latam      { background: #39d353; }
-
-  /* ── Responsive ── */
   @media (max-width: 1400px) { .g9 { grid-template-columns: repeat(5, 1fr); } }
   @media (max-width: 1100px) { .g9 { grid-template-columns: repeat(3, 1fr); } }
-  @media (max-width: 900px)  {
-    .grid, .g3, .g5, .g9 { grid-template-columns: repeat(3, 1fr); }
-  }
-  @media (max-width: 620px)  {
-    .grid, .g3, .g5, .g9 { grid-template-columns: repeat(2, 1fr); }
-  }
-  @media (max-width: 400px)  {
-    .grid, .g3, .g5, .g9 { grid-template-columns: 1fr; }
-  }
+  @media (max-width: 900px)  { .grid, .g3, .g5, .g9 { grid-template-columns: repeat(3, 1fr); } }
+  @media (max-width: 620px)  { .grid, .g3, .g5, .g9 { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 400px)  { .grid, .g3, .g5, .g9 { grid-template-columns: 1fr; } }
 </style>
 </head>
 <body>
@@ -153,7 +130,7 @@
   <span class="badge">LIVE</span>
 </header>
 
-<!-- ══════════════ COMMODITIES (always open) ══════════════ -->
+<!-- ══════════════ COMMODITIES ══════════════ -->
 <div class="section">
   <button class="section-toggle open" onclick="toggle(this)">
     <span class="accent ac-commodity"></span>
@@ -182,7 +159,7 @@
   </div>
 </div>
 
-<!-- ══════════════ SUPER MAJORS (always open) ══════════════ -->
+<!-- ══════════════ SUPER MAJORS ══════════════ -->
 <div class="section">
   <button class="section-toggle open" onclick="toggle(this)">
     <span class="accent ac-major"></span>
@@ -215,7 +192,7 @@
   </div>
 </div>
 
-<!-- ══════════════ US E&P (collapsed) ══════════════ -->
+<!-- ══════════════ US E&P ══════════════ -->
 <div class="section">
   <button class="section-toggle" onclick="toggle(this)">
     <span class="accent ac-us"></span>
@@ -264,7 +241,7 @@
   </div>
 </div>
 
-<!-- ══════════════ EUROPE E&P (collapsed) ══════════════ -->
+<!-- ══════════════ EUROPE E&P ══════════════ -->
 <div class="section">
   <button class="section-toggle" onclick="toggle(this)">
     <span class="accent ac-europe"></span>
@@ -297,7 +274,7 @@
   </div>
 </div>
 
-<!-- ══════════════ ASIA E&P (collapsed) ══════════════ -->
+<!-- ══════════════ ASIA E&P ══════════════ -->
 <div class="section">
   <button class="section-toggle" onclick="toggle(this)">
     <span class="accent ac-asia"></span>
@@ -330,40 +307,99 @@
   </div>
 </div>
 
-<!-- ══════════════ LATAM E&P (collapsed) ══════════════ -->
+<!-- ══════════════ LATAM E&P (updated) ══════════════ -->
 <div class="section">
   <button class="section-toggle" onclick="toggle(this)">
     <span class="accent ac-latam"></span>
-    <span class="label">🌎 LATAM — Top 5 E&amp;P Operators</span>
+    <span class="label">🌎 LATAM — E&amp;P Operators</span>
     <span class="chevron">▼</span>
   </button>
   <div class="section-body">
-    <div class="grid g5">
+
+    <!-- Brazil -->
+    <div class="sub-label">🇧🇷 Brazil</div>
+    <div class="grid g3">
       <div class="card">
-        <div class="card-header"><span class="ticker">PBR</span><span class="name">Petrobras (BR)</span></div>
+        <div class="card-header"><span class="ticker">PBR</span><span class="name">Petrobras</span></div>
         <iframe src="https://s.tradingview.com/widgetembed/?symbol=NYSE%3APBR&interval=D&theme=dark&style=3&hide_top_toolbar=1&hidesidetoolbar=1&withdateranges=0&hideideas=1&saveimage=0" allowtransparency="true" scrolling="no"></iframe>
       </div>
       <div class="card">
-        <div class="card-header"><span class="ticker">EC</span><span class="name">Ecopetrol (CO)</span></div>
+        <div class="card-header"><span class="ticker">BRAV3</span><span class="name">Brava Energia (B3)</span></div>
+        <iframe src="https://s.tradingview.com/widgetembed/?symbol=BMFBOVESPA%3ABRAV3&interval=D&theme=dark&style=3&hide_top_toolbar=1&hidesidetoolbar=1&withdateranges=0&hideideas=1&saveimage=0" allowtransparency="true" scrolling="no"></iframe>
+      </div>
+      <div class="card">
+        <div class="card-header"><span class="ticker">PRIO3</span><span class="name">PRIO (B3)</span></div>
+        <iframe src="https://s.tradingview.com/widgetembed/?symbol=BMFBOVESPA%3APRIO3&interval=D&theme=dark&style=3&hide_top_toolbar=1&hidesidetoolbar=1&withdateranges=0&hideideas=1&saveimage=0" allowtransparency="true" scrolling="no"></iframe>
+      </div>
+      <div class="card">
+        <div class="card-header"><span class="ticker">ENAT3</span><span class="name">Enauta (B3)</span></div>
+        <iframe src="https://s.tradingview.com/widgetembed/?symbol=BMFBOVESPA%3AENAT3&interval=D&theme=dark&style=3&hide_top_toolbar=1&hidesidetoolbar=1&withdateranges=0&hideideas=1&saveimage=0" allowtransparency="true" scrolling="no"></iframe>
+      </div>
+    </div>
+
+    <!-- Colombia -->
+    <div class="sub-label">🇨🇴 Colombia</div>
+    <div class="grid g3">
+      <div class="card">
+        <div class="card-header"><span class="ticker">EC</span><span class="name">Ecopetrol (NYSE)</span></div>
         <iframe src="https://s.tradingview.com/widgetembed/?symbol=NYSE%3AEC&interval=D&theme=dark&style=3&hide_top_toolbar=1&hidesidetoolbar=1&withdateranges=0&hideideas=1&saveimage=0" allowtransparency="true" scrolling="no"></iframe>
       </div>
       <div class="card">
-        <div class="card-header"><span class="ticker">YPF</span><span class="name">YPF S.A. (AR)</span></div>
+        <div class="card-header"><span class="ticker">CNE</span><span class="name">Canacol Energy (TSX)</span></div>
+        <iframe src="https://s.tradingview.com/widgetembed/?symbol=TSX%3ACNE&interval=D&theme=dark&style=3&hide_top_toolbar=1&hidesidetoolbar=1&withdateranges=0&hideideas=1&saveimage=0" allowtransparency="true" scrolling="no"></iframe>
+      </div>
+      <div class="card">
+        <div class="card-header"><span class="ticker">FEC</span><span class="name">Frontera Energy (TSX)</span></div>
+        <iframe src="https://s.tradingview.com/widgetembed/?symbol=TSX%3AFEC&interval=D&theme=dark&style=3&hide_top_toolbar=1&hidesidetoolbar=1&withdateranges=0&hideideas=1&saveimage=0" allowtransparency="true" scrolling="no"></iframe>
+      </div>
+    </div>
+
+    <!-- Argentina -->
+    <div class="sub-label">🇦🇷 Argentina</div>
+    <div class="grid g3">
+      <div class="card">
+        <div class="card-header"><span class="ticker">YPF</span><span class="name">YPF S.A. (NYSE)</span></div>
         <iframe src="https://s.tradingview.com/widgetembed/?symbol=NYSE%3AYPF&interval=D&theme=dark&style=3&hide_top_toolbar=1&hidesidetoolbar=1&withdateranges=0&hideideas=1&saveimage=0" allowtransparency="true" scrolling="no"></iframe>
       </div>
       <div class="card">
-        <div class="card-header"><span class="ticker">VISTF</span><span class="name">Vista Energy (AR)</span></div>
+        <div class="card-header"><span class="ticker">VIST</span><span class="name">Vista Energy (NYSE)</span></div>
         <iframe src="https://s.tradingview.com/widgetembed/?symbol=NYSE%3AVISTA&interval=D&theme=dark&style=3&hide_top_toolbar=1&hidesidetoolbar=1&withdateranges=0&hideideas=1&saveimage=0" allowtransparency="true" scrolling="no"></iframe>
       </div>
       <div class="card">
-        <div class="card-header"><span class="ticker">GPRK</span><span class="name">GeoPark (CL/CO)</span></div>
-        <iframe src="https://s.tradingview.com/widgetembed/?symbol=NYSE%3AGPRK&interval=D&theme=dark&style=3&hide_top_toolbar=1&hidesidetoolbar=1&withdateranges=0&hideideas=1&saveimage=0" allowtransparency="true" scrolling="no"></iframe>
+        <div class="card-header"><span class="ticker">PAM</span><span class="name">Pampa Energía (NYSE)</span></div>
+        <iframe src="https://s.tradingview.com/widgetembed/?symbol=NYSE%3APAM&interval=D&theme=dark&style=3&hide_top_toolbar=1&hidesidetoolbar=1&withdateranges=0&hideideas=1&saveimage=0" allowtransparency="true" scrolling="no"></iframe>
       </div>
     </div>
+
+    <!-- Multi-country / TSX-listed -->
+    <div class="sub-label">🌎 Multi-country (TSX / NYSE)</div>
+    <div class="grid g5">
+      <div class="card">
+        <div class="card-header"><span class="ticker">GPRK</span><span class="name">GeoPark (NYSE)</span></div>
+        <iframe src="https://s.tradingview.com/widgetembed/?symbol=NYSE%3AGPRK&interval=D&theme=dark&style=3&hide_top_toolbar=1&hidesidetoolbar=1&withdateranges=0&hideideas=1&saveimage=0" allowtransparency="true" scrolling="no"></iframe>
+      </div>
+      <div class="card">
+        <div class="card-header"><span class="ticker">GTE</span><span class="name">Gran Tierra Energy (NYSE)</span></div>
+        <iframe src="https://s.tradingview.com/widgetembed/?symbol=NYSE%3AGTE&interval=D&theme=dark&style=3&hide_top_toolbar=1&hidesidetoolbar=1&withdateranges=0&hideideas=1&saveimage=0" allowtransparency="true" scrolling="no"></iframe>
+      </div>
+      <div class="card">
+        <div class="card-header"><span class="ticker">PXT</span><span class="name">Parex Resources (TSX)</span></div>
+        <iframe src="https://s.tradingview.com/widgetembed/?symbol=TSX%3APXT&interval=D&theme=dark&style=3&hide_top_toolbar=1&hidesidetoolbar=1&withdateranges=0&hideideas=1&saveimage=0" allowtransparency="true" scrolling="no"></iframe>
+      </div>
+      <div class="card">
+        <div class="card-header"><span class="ticker">PTAL</span><span class="name">Petro TAL (TSX-V)</span></div>
+        <iframe src="https://s.tradingview.com/widgetembed/?symbol=TSXV%3APTAL&interval=D&theme=dark&style=3&hide_top_toolbar=1&hidesidetoolbar=1&withdateranges=0&hideideas=1&saveimage=0" allowtransparency="true" scrolling="no"></iframe>
+      </div>
+      <div class="card">
+        <div class="card-header"><span class="ticker">TXP</span><span class="name">Touchstone Exploration (TSX)</span></div>
+        <iframe src="https://s.tradingview.com/widgetembed/?symbol=TSX%3ATXP&interval=D&theme=dark&style=3&hide_top_toolbar=1&hidesidetoolbar=1&withdateranges=0&hideideas=1&saveimage=0" allowtransparency="true" scrolling="no"></iframe>
+      </div>
+    </div>
+
   </div>
 </div>
 
-<footer>Data via TradingView · Prices delayed per exchange rules · For internal use only</footer>
+<footer>Data via TradingView · Prices delayed per exchange rules · SierraCo Energy &amp; Pemex excluded (no public ticker) · For internal use only</footer>
 
 <script>
   function toggle(btn) {
