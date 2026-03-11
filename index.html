@@ -45,48 +45,23 @@
     margin-bottom: 0;
   }
   .section-toggle:hover { border-color: #388bfd; }
-  .section-toggle .accent {
-    width: 4px;
-    height: 20px;
-    border-radius: 2px;
-    flex-shrink: 0;
-  }
+  .section-toggle .accent { width: 4px; height: 20px; border-radius: 2px; flex-shrink: 0; }
   .section-toggle .label {
-    font-size: 0.75rem;
-    font-weight: 700;
-    letter-spacing: 1.3px;
-    text-transform: uppercase;
-    color: #c9d1d9;
-    flex: 1;
-    text-align: left;
+    font-size: 0.75rem; font-weight: 700; letter-spacing: 1.3px;
+    text-transform: uppercase; color: #c9d1d9; flex: 1; text-align: left;
   }
-  .section-toggle .chevron {
-    font-size: 0.9rem;
-    color: #8b949e;
-    transition: transform .25s;
-  }
+  .section-toggle .chevron { font-size: 0.9rem; color: #8b949e; transition: transform .25s; }
   .section-toggle.open .chevron { transform: rotate(180deg); }
   .section-body {
-    overflow: hidden;
-    max-height: 0;
-    transition: max-height .35s ease, padding .25s;
-    padding: 0 2px;
+    overflow: hidden; max-height: 0;
+    transition: max-height .35s ease, padding .25s; padding: 0 2px;
   }
-  .section-body.open {
-    max-height: 4000px;
-    padding: 12px 2px 4px;
-  }
+  .section-body.open { max-height: 4000px; padding: 12px 2px 4px; }
   .sub-label {
-    font-size: 0.68rem;
-    font-weight: 700;
-    letter-spacing: 1.2px;
-    text-transform: uppercase;
-    color: #8b949e;
-    margin: 14px 0 8px;
-    padding: 5px 10px;
-    background: #0d1117;
-    border-left: 3px solid #30363d;
-    border-radius: 0 5px 5px 0;
+    font-size: 0.68rem; font-weight: 700; letter-spacing: 1.2px;
+    text-transform: uppercase; color: #8b949e; margin: 14px 0 8px;
+    padding: 5px 10px; background: #0d1117;
+    border-left: 3px solid #30363d; border-radius: 0 5px 5px 0;
   }
   .sub-label:first-child { margin-top: 0; }
   .grid  { display: grid; gap: 10px; grid-template-columns: repeat(4, 1fr); }
@@ -94,28 +69,28 @@
   .g5    { grid-template-columns: repeat(5, 1fr); }
   .g9    { grid-template-columns: repeat(9, 1fr); }
   .card {
-    background: #161b22;
-    border: 1px solid #21262d;
-    border-radius: 10px;
-    overflow: hidden;
+    background: #161b22; border: 1px solid #21262d;
+    border-radius: 10px; overflow: hidden;
   }
   .card:hover { border-color: #388bfd; }
   .card-header {
-    padding: 7px 10px 3px;
-    display: flex;
-    justify-content: space-between;
-    align-items: baseline;
+    padding: 7px 10px 3px; display: flex;
+    justify-content: space-between; align-items: baseline;
   }
   .ticker { font-size: 0.8rem; font-weight: 700; color: #f0f6fc; }
   .name   { font-size: 0.62rem; color: #8b949e; }
   .card iframe { display: block; width: 100%; height: 155px; border: none; }
+  /* Script-widget wrapper — matches iframe height */
+  .tv-widget-wrap { width: 100%; height: 155px; overflow: hidden; }
+  .tv-widget-wrap .tradingview-widget-container,
+  .tv-widget-wrap .tradingview-widget-container__widget { width: 100% !important; height: 155px !important; }
   footer { text-align: center; font-size: 0.65rem; color: #484f58; margin-top: 16px; }
-  .ac-commodity  { background: #f7c948; }
-  .ac-major      { background: #1f6feb; }
-  .ac-us         { background: #3fb950; }
-  .ac-europe     { background: #a371f7; }
-  .ac-asia       { background: #f78166; }
-  .ac-latam      { background: #39d353; }
+  .ac-commodity { background: #f7c948; }
+  .ac-major     { background: #1f6feb; }
+  .ac-us        { background: #3fb950; }
+  .ac-europe    { background: #a371f7; }
+  .ac-asia      { background: #f78166; }
+  .ac-latam     { background: #39d353; }
   @media (max-width: 1400px) { .g9 { grid-template-columns: repeat(5, 1fr); } }
   @media (max-width: 1100px) { .g9 { grid-template-columns: repeat(3, 1fr); } }
   @media (max-width: 900px)  { .grid, .g3, .g5, .g9 { grid-template-columns: repeat(3, 1fr); } }
@@ -129,6 +104,15 @@
   <h1>⚡ Energy Market Dashboard</h1>
   <span class="badge">LIVE</span>
 </header>
+
+<!-- Helper: build a script-based mini chart widget -->
+<template id="tv-tpl">
+  <div class="tv-widget-wrap">
+    <div class="tradingview-widget-container">
+      <div class="tradingview-widget-container__widget"></div>
+    </div>
+  </div>
+</template>
 
 <!-- ══════════════ COMMODITIES ══════════════ -->
 <div class="section">
@@ -307,7 +291,7 @@
   </div>
 </div>
 
-<!-- ══════════════ LATAM E&P (updated) ══════════════ -->
+<!-- ══════════════ LATAM E&P ══════════════ -->
 <div class="section">
   <button class="section-toggle" onclick="toggle(this)">
     <span class="accent ac-latam"></span>
@@ -320,7 +304,7 @@
     <div class="sub-label">🇧🇷 Brazil</div>
     <div class="grid g3">
       <div class="card">
-        <div class="card-header"><span class="ticker">PBR</span><span class="name">Petrobras</span></div>
+        <div class="card-header"><span class="ticker">PBR</span><span class="name">Petrobras (NYSE)</span></div>
         <iframe src="https://s.tradingview.com/widgetembed/?symbol=NYSE%3APBR&interval=D&theme=dark&style=3&hide_top_toolbar=1&hidesidetoolbar=1&withdateranges=0&hideideas=1&saveimage=0" allowtransparency="true" scrolling="no"></iframe>
       </div>
       <div class="card">
@@ -331,9 +315,10 @@
         <div class="card-header"><span class="ticker">PRIO3</span><span class="name">PRIO (B3)</span></div>
         <iframe src="https://s.tradingview.com/widgetembed/?symbol=BMFBOVESPA%3APRIO3&interval=D&theme=dark&style=3&hide_top_toolbar=1&hidesidetoolbar=1&withdateranges=0&hideideas=1&saveimage=0" allowtransparency="true" scrolling="no"></iframe>
       </div>
+      <!-- ENAT3: script widget (widgetembed unreliable for this symbol) -->
       <div class="card">
         <div class="card-header"><span class="ticker">ENAT3</span><span class="name">Enauta (B3)</span></div>
-        <iframe src="https://s.tradingview.com/widgetembed/?symbol=BMFBOVESPA%3AENAT3B3&interval=D&theme=dark&style=3&hide_top_toolbar=1&hidesidetoolbar=1&withdateranges=0&hideideas=1&saveimage=0" allowtransparency="true" scrolling="no"></iframe>
+        <div class="tv-widget-wrap" id="w-enat3"></div>
       </div>
     </div>
 
@@ -344,9 +329,10 @@
         <div class="card-header"><span class="ticker">EC</span><span class="name">Ecopetrol (NYSE)</span></div>
         <iframe src="https://s.tradingview.com/widgetembed/?symbol=NYSE%3AEC&interval=D&theme=dark&style=3&hide_top_toolbar=1&hidesidetoolbar=1&withdateranges=0&hideideas=1&saveimage=0" allowtransparency="true" scrolling="no"></iframe>
       </div>
+      <!-- CNE: script widget -->
       <div class="card">
         <div class="card-header"><span class="ticker">CNE</span><span class="name">Canacol Energy (TSX)</span></div>
-        <iframe src="https://s.tradingview.com/widgetembed/?symbol=TSX%3ACNE&interval=D&theme=dark&style=3&hide_top_toolbar=1&hidesidetoolbar=1&withdateranges=0&hideideas=1&saveimage=0&locale=en" allowtransparency="true" scrolling="no"></iframe>
+        <div class="tv-widget-wrap" id="w-cne"></div>
       </div>
       <div class="card">
         <div class="card-header"><span class="ticker">FEC</span><span class="name">Frontera Energy (TSX)</span></div>
@@ -371,24 +357,26 @@
       </div>
     </div>
 
-    <!-- Multi-country / TSX-listed -->
-    <div class="sub-label">🌎 Multi-country (TSX / NYSE)</div>
+    <!-- Multi-country -->
+    <div class="sub-label">🌎 Multi-country (TSX / AMEX)</div>
     <div class="grid g5">
       <div class="card">
         <div class="card-header"><span class="ticker">GPRK</span><span class="name">GeoPark (NYSE)</span></div>
         <iframe src="https://s.tradingview.com/widgetembed/?symbol=NYSE%3AGPRK&interval=D&theme=dark&style=3&hide_top_toolbar=1&hidesidetoolbar=1&withdateranges=0&hideideas=1&saveimage=0" allowtransparency="true" scrolling="no"></iframe>
       </div>
+      <!-- GTE: script widget (AMEX) -->
       <div class="card">
-        <div class="card-header"><span class="ticker">GTE</span><span class="name">Gran Tierra Energy (NYSE)</span></div>
-        <iframe src="https://s.tradingview.com/widgetembed/?symbol=NYSE%3AGTE&interval=D&theme=dark&style=3&hide_top_toolbar=1&hidesidetoolbar=1&withdateranges=0&hideideas=1&saveimage=0" allowtransparency="true" scrolling="no"></iframe>
+        <div class="card-header"><span class="ticker">GTE</span><span class="name">Gran Tierra Energy (AMEX)</span></div>
+        <div class="tv-widget-wrap" id="w-gte"></div>
       </div>
       <div class="card">
         <div class="card-header"><span class="ticker">PXT</span><span class="name">Parex Resources (TSX)</span></div>
         <iframe src="https://s.tradingview.com/widgetembed/?symbol=TSX%3APXT&interval=D&theme=dark&style=3&hide_top_toolbar=1&hidesidetoolbar=1&withdateranges=0&hideideas=1&saveimage=0" allowtransparency="true" scrolling="no"></iframe>
       </div>
+      <!-- TAL: script widget (TSX) -->
       <div class="card">
-        <div class="card-header"><span class="ticker">PTAL</span><span class="name">Petro TAL (TSX-V)</span></div>
-        <iframe src="https://s.tradingview.com/widgetembed/?symbol=TSXV%3APTAL&interval=D&theme=dark&style=3&hide_top_toolbar=1&hidesidetoolbar=1&withdateranges=0&hideideas=1&saveimage=0" allowtransparency="true" scrolling="no"></iframe>
+        <div class="card-header"><span class="ticker">TAL</span><span class="name">Petro TAL (TSX)</span></div>
+        <div class="tv-widget-wrap" id="w-tal"></div>
       </div>
       <div class="card">
         <div class="card-header"><span class="ticker">TXP</span><span class="name">Touchstone Exploration (TSX)</span></div>
@@ -404,9 +392,50 @@
 <script>
   function toggle(btn) {
     btn.classList.toggle('open');
-    const body = btn.nextElementSibling;
-    body.classList.toggle('open');
+    btn.nextElementSibling.classList.toggle('open');
   }
+
+  /* Inject script-based mini chart widgets for symbols that fail with widgetembed */
+  const scriptWidgets = [
+    { id: 'w-enat3', symbol: 'BMFBOVESPA:ENAT3' },
+    { id: 'w-cne',   symbol: 'TSX:CNE'           },
+    { id: 'w-gte',   symbol: 'AMEX:GTE'           },
+    { id: 'w-tal',   symbol: 'TSX:TAL'            },
+  ];
+
+  scriptWidgets.forEach(({ id, symbol }) => {
+    const container = document.getElementById(id);
+    if (!container) return;
+
+    const inner = document.createElement('div');
+    inner.className = 'tradingview-widget-container';
+    inner.style.cssText = 'width:100%;height:155px;';
+
+    const widget = document.createElement('div');
+    widget.className = 'tradingview-widget-container__widget';
+    inner.appendChild(widget);
+    container.appendChild(inner);
+
+    const script = document.createElement('script');
+    script.type = 'text/javascript';
+    script.src = 'https://s3.tradingview.com/external-embedding/embed-widget-mini-symbol-overview.js';
+    script.async = true;
+    script.innerHTML = JSON.stringify({
+      symbol,
+      width: '100%',
+      height: 155,
+      locale: 'en',
+      dateRange: '12M',
+      colorTheme: 'dark',
+      trendLineColor: 'rgba(41,98,255,1)',
+      underLineColor: 'rgba(41,98,255,0.3)',
+      underLineBottomColor: 'rgba(41,98,255,0)',
+      isTransparent: true,
+      autosize: false,
+      largeChartUrl: ''
+    });
+    inner.appendChild(script);
+  });
 </script>
 
 </body>
